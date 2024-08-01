@@ -1,6 +1,5 @@
-from flask import redirect, url_for, request
+from flask import request
 from flask_mysqldb import MySQL 
-import requests
 from app import create_app
 
 app = create_app()
@@ -8,7 +7,7 @@ mysql = MySQL(app)
 
 @app.route("/", methods=['GET'])
 def home_page():
-    return redirect(url_for("auth"))
+    return "Microservice A for User Auth @ Endpoint '/auth'"
 
 @app.route("/auth", methods=['POST'])
 def auth():
@@ -24,7 +23,6 @@ def auth():
     payload = {"auth_message": False}
     if res['password'] == password:
         payload = {"auth_message": True}
-    # requests.post("http://classwork.engr.oregonstate.edu:61932", json = payload)
     return payload
 
 
