@@ -1,6 +1,11 @@
 .venv
+
+bin
+include
 Include
 Lib
+lib
+lib64
 Scripts
 pyvenv.cfg
 

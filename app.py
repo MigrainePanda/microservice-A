@@ -1,8 +1,16 @@
-from flask import request
+from flask import Flask, request
+from flask_cors import CORS
 from flask_mysqldb import MySQL 
-from app import create_app
 
-app = create_app()
+app = Flask(__name__)
+CORS(app)
+
+app.config['MYSQL_HOST'] = 'classmysql.engr.oregonstate.edu'
+app.config['MYSQL_USER'] = 'cs361_samsmi'
+app.config['MYSQL_PASSWORD'] = '4423'
+app.config['MYSQL_DB'] = 'cs361_samsmi'
+app.config['MYSQL_CURSORCLASS'] = "DictCursor"
+
 mysql = MySQL(app)
 
 @app.route("/", methods=['GET'])
@@ -27,4 +35,4 @@ def auth():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=56329, debug=True)
