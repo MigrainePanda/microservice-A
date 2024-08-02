@@ -28,10 +28,10 @@ def auth():
     cur.execute(query)
     res = cur.fetchone()
        
-    payload = {"auth_message": False}
+    resp = {"auth_message": False}
     if res['password'] == password:
-        payload = {"auth_message": True}
-    return payload
+        resp = {"auth_message": True}
+    return resp
 
 
 if __name__ == '__main__':
